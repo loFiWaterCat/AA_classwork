@@ -6,8 +6,10 @@ class Game
   def initialize(names, lives)
     @fragment = ""
     @dictionary = {}
+
     @player_1 = Player.new(names[0])
     @player_2 = Player.new(names[1])
+
     @players = [@player_1, @player_2]
     @current_player = @players[0]
     @previous_player = @players[-1]
