@@ -33,7 +33,7 @@ def bsearch(array, target)
     left = array[0...mid]
     right = array[mid + 1..-1]
 
-    
+
     if array[mid] > target
         bsearch(left, target)
     else
@@ -99,10 +99,19 @@ end
 # p merge_sort([38, 27, 43, 3, 9, 82, 10])
 
 def subsets(arr)
-    #return arr if arr.length <= 1
+    # Basecases
+    return [arr] if arr.empty?
+    #return [[], arr] if arr.length == 1
+    #return [[], [arr[0]], [arr[1]], [arr[0], arr[1]]] if arr.length == 2
 
+    # Actual recursion
 
-    p subsets(arr[0...-1])
+    last = arr.pop
+    prev = subsets(arr)
+
+    prev + prev.map {|sub| sub + [last] }
+    
 end
 
-p subsets([1, 2, 3])
+p subsets([1, 2, 3]) # # => [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
+
