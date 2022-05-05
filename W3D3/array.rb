@@ -115,3 +115,11 @@ end
 
 p subsets([1, 2, 3]) # # => [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
 
+def permutations(arr)
+    return [arr] if arr.length == 1
+
+    last = arr.pop
+    prev = permutations(arr).each_with_index do |el, ind|
+end
+
+p permutations([1, 2, 3])
