@@ -1,3 +1,5 @@
+require "byebug"
+
 class PolyTreeNode
     attr_reader :parent, :children, :value
 
@@ -21,6 +23,18 @@ class PolyTreeNode
     def remove_child(child_node)
         raise "parent is nil" if child_node.parent == nil
         child_node.parent = nil
+    end
+
+    def dfs(target_value)
+      return self if self.value == target_value
+      return nil if self.children == []
+
+      self.children.each do |child|
+        stack = child.dfs(target_value)
+        return stack if stack != nil
+      end
+
+      return nil
     end
 
 end
