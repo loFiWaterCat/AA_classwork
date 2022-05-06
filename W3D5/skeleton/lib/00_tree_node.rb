@@ -1,6 +1,6 @@
 class PolyTreeNode
     attr_reader :parent, :children, :value
-    
+
     def initialize(value)
         @parent = nil
         @children = []
@@ -8,7 +8,8 @@ class PolyTreeNode
     end
 
     def parent=(new_node)
-        @parent.children.select!
+        @parent.children.select! {|el| el != self} if @parent != nil
+
         @parent = new_node
         @parent.children << self if new_node != nil
     end
