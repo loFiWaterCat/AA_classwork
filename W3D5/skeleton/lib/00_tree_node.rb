@@ -13,4 +13,14 @@ class PolyTreeNode
         @parent = new_node
         @parent.children << self if new_node != nil
     end
+
+    def add_child(child_node)
+        child_node.parent = self
+    end
+
+    def remove_child(child_node)
+        raise "parent is nil" if child_node.parent == nil
+        child_node.parent = nil
+    end
+
 end
