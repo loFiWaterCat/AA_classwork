@@ -33,5 +33,15 @@ class KnightPathFinder
     return filtered_pos
   end
 
-  
+  ## TODO: Finish build_move_tree
+  def build_move_tree
+    moves = new_move_positions(@start)
+
+    qeueu
+
+    moves.each do |child_val|
+      @root_node.children << PolyTreeNode.new(child_val)
+    end
+  end
+
 end
