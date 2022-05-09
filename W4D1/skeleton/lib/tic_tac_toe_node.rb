@@ -21,6 +21,11 @@ class TicTacToeNode
     (0..2).each do |row|
       (0..2).each do |col|
         if @board.empty?([row, col])
+          new_board = @board.dup
+          new_board[[row, col]] = next_mover_mark
+
+          @children << TicTacToeNode.new(new_board, @board[prev_move_pos], [row, col]
+
 
 
 
