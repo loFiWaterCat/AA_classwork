@@ -1,7 +1,7 @@
 require_relative "00_tree_node"
 
 class KnightPathFinder
-  attr_reader :root_node
+  attr_reader :root_node, :considered_positions
 
   def initialize(pos)
     @start = pos
@@ -35,12 +35,17 @@ class KnightPathFinder
 
   ## TODO: Finish build_move_tree
   def build_move_tree
-    moves = new_move_positions(@start)
 
-    qeueu
+    queue = [@root_node]
 
-    moves.each do |child_val|
-      @root_node.children << PolyTreeNode.new(child_val)
+    while queue.length > 0
+      first = queue.shift
+      moves = new_move_positions(first.value)
+      moves.each do |pos|
+        child = PolyTreeNode.new(pos)
+        first.add_child(child)
+        queue << child
+      end
     end
   end
 
