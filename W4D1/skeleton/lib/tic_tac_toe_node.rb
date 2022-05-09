@@ -10,27 +10,35 @@ class TicTacToeNode
   end
 
   def losing_node?(evaluator)
-    if board.over? && (board.winner != evaluator && board.winner != nil)
-      return true
-    else
-      return false
+    queue = [self]
+    while !queue.empty?
+      first = queue.shift
+      first.children.each do |child|
+        if child.board.over? && (child.board.winner == evaluator ||
+            child.board.winner == nil)
+          return false
+        else
+          queue << child
+        end
+      end
     end
+    return true if queue.empty?
   end
 
   def winning_node?(evaluator)
     queue = [self]
-    return false if queue.empty?
     while !queue.empty?
       first = queue.shift
       first.children.each do |child|
-        if child.board.over? && (child.board.winner == evaluator || child.board.winner == nil)
+        if child.board.over? && (child.board.winner == evaluator ||
+            child.board.winner == nil)
           return true
         else
           queue << child
         end
       end
     end
-    return false
+    return false if queue.empty?
   end
 
   # This method generates an array of all moves that can be made after
@@ -44,7 +52,7 @@ class TicTacToeNode
           new_board = @board.dup
           new_board[[row, col]] = @next_mover_mark
           if @prev_move_pos == nil
-            next_mover_mark = :o 
+            next_mover_mark = :o
           else
             next_mover_mark = @board[@prev_move_pos]
           end
