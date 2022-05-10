@@ -10,19 +10,22 @@ class TicTacToeNode
   end
 
   def losing_node?(evaluator)
-    queue = [self]
-    while !queue.empty?
-      first = queue.shift
-      first.children.each do |child|
-        if child.board.over? && (child.board.winner == evaluator ||
-            child.board.winner == nil)
-          return false
-        else
-          queue << child
-        end
-      end
+    return false if board.over? && (board.winner == nil || 
+    board.winner == evaluator)
+    #return true if board.over? && board.winner != evaluator
+    self.children.each do |child|
+      child.losing_node?(evaluator)
     end
-    return true if queue.empty?
+
+    return true 
+    # return true if self.children == []
+    # self.children.each do |child|
+    #   if child.board.over? && (child.board.winner == evaluator || child.board.winner == nil)
+    #     return false
+    #   else
+    #     child.losing_node?(evaluator)
+    #   end
+    # end
   end
 
   def winning_node?(evaluator)
