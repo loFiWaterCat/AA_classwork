@@ -20,6 +20,15 @@ class Piece
 
     end
 
+    def saving_moves
+        all_moves = valid_moves
+        safe_moves = all_moves.select do |move|
+            duped_board = @board.dup
+            duped_board.move_piece(pos, move)
+            !duped_board.in_check?(color)
+        end
+    end
+
     def pos=(val)
         @pos = val
     end

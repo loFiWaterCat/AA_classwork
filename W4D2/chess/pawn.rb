@@ -18,7 +18,7 @@ class Pawn < Piece
         # adding diagonal attacks
         [-1, 1].each do |side|
             new_pos = [row + dir, col + side]
-            if @board[new_pos].color != nil && @board[new_pos].color != self.color
+            if @board.valid_pos?(new_pos) && @board[new_pos].color != nil && @board[new_pos].color != self.color
                 valid_positions << new_pos
             end
         end

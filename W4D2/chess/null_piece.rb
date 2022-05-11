@@ -8,4 +8,9 @@ class NullPiece < Piece
         @color = nil
         @board = nil
     end
+
+    def valid_moves
+        []
+    end
+    
 end

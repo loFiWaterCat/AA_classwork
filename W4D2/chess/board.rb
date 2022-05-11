@@ -108,5 +108,36 @@ class Board
       false
     end
 
+    def checkmate?(color)
+        if in_check?(color)
+            rows.each do |row|
+                row.each do |piece|
+                    return false if piece.color == color && !piece.saving_moves.empty?
+                end
+            end
+        else
+            return false
+        end
+        true
+    end
+
+    def dup
+        new_rows = []
+        new_board = Board.new
+        rows.each_with_index do |row, i|
+            row.each_with_index do |piece, j|
+                new_color = piece.color
+                new_pos = [i, j]
+                new_piece = nil
+                if piece.class != NullPiece
+                    new_piece = piece.class.new(new_color, new_board, new_pos)
+                else
+                    new_piece = NullPiece.instance
+                end
+                new_board[new_pos] = new_piece
+            end
+        end
+       new_board
+    end
 
 end
