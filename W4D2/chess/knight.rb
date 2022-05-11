@@ -10,10 +10,6 @@ class Knight < Piece
     end
 
     def symbol
-        if color == :w
-            "♘"
-        else
-            "♞"
-        end
+        "♞"
     end
 end

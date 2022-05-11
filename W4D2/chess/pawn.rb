@@ -7,11 +7,7 @@ class Pawn < Piece
     end
 
     def symbol
-        if color == :w
-            ♙
-        else
-            ♟
-        end
+        "♟"
     end
 
     def valid_moves

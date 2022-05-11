@@ -10,11 +10,7 @@ class Queen < Piece
   end
 
   def symbol
-    if @color == :w
-      ♕
-    else
-      ♛
-    end
+    "♛"
   end
 
   private

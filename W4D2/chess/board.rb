@@ -8,6 +8,7 @@ require_relative "rook.rb"
 require_relative "bishop.rb"
 
 class Board
+
     def initialize
         @rows = Array.new(8) { Array.new(8) }
 
@@ -42,6 +43,10 @@ class Board
             end
         end
        
+    end
+
+    def rows
+        duplicate = @rows.dup
     end
 
     def[](pos)
