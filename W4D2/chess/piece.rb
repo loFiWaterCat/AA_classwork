@@ -1,5 +1,5 @@
 class Piece
-    
+
     attr_reader :color, :pos
 
     def initialize(color, board, pos)
@@ -22,7 +22,7 @@ class Piece
 
     def saving_moves
         all_moves = valid_moves
-        safe_moves = all_moves.select do |move|
+        filtered_moves = all_moves.select do |move|
             duped_board = @board.dup
             duped_board.move_piece(pos, move)
             !duped_board.in_check?(color)

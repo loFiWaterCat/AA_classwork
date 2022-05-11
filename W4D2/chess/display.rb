@@ -3,16 +3,33 @@ require_relative "cursor.rb"
 
 class Display
 
-  def initialize(board)
+  def initialize(board, debug = false)
     @board = board
     @cursor = Cursor.new([0, 0], @board)
+    @debug = debug
   end
 
   def render
     system("clear")
+    start_pos = []
+    end_pos = []
+    prev = @cursor.selected
     while true
       print
+      debug_info if @debug
+      puts "Start pos: #{start_pos}"
+      puts "End pos: #{end_pos}"
+      puts "Cursor state: #{@cursor.selected}"
       @cursor.get_input
+      if @cursor.selected != prev
+        prev = @cursor.selected
+        if @cursor.selected
+          start_pos = @cursor.cursor_pos
+        else
+          end_pos = @cursor.cursor_pos
+          @board.safe_move_piece(start_pos, end_pos)
+        end
+      end
       system("clear")
     end
   end
@@ -49,6 +66,15 @@ class Display
       row_str += " "
       puts row_str
     end
+  end
+
+  def debug_info
+    white_check = @board.in_check?(:w)
+    black_check = @board.in_check?(:b)
+    safe_moves = @board[@cursor.cursor_pos].saving_moves
+    puts "White check status: #{white_check}"
+    puts "Black check status: #{black_check}"
+    puts "Cursor's piece safe moves: #{safe_moves}"
   end
 
 end

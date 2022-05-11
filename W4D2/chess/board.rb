@@ -72,6 +72,16 @@ class Board
         self[end_pos] = piece
     end
 
+    def safe_move_piece(start_pos, end_pos)
+      piece = self[start_pos]
+      legal_moves = piece.saving_moves
+      raise "Illegal move" if !legal_moves.include?(end_pos)
+
+      piece.pos = end_pos
+      self[start_pos] = NullPiece.instance
+      self[end_pos] = piece
+    end
+
     def valid_pos?(pos)
         row, col = pos
         if row < 0 || col < 0 || row > 7 || col > 7

@@ -30,7 +30,7 @@ module Stepable
             dx, dy = direction
             new_pos = [x + dx, y + dy]
             # need to refactor for NullPiece
-            if @board.valid_pos?(new_pos) && 
+            if @board.valid_pos?(new_pos) &&
                 (@board[new_pos] == nil || @board[new_pos].color != self.color)
                 valid_positions << new_pos
             end
