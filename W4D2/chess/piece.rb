@@ -29,6 +29,7 @@ class Piece
     attr_reader :color
 
     private
+    attr_reader :pos
     def move_into_check?(end_pos)
 
     end

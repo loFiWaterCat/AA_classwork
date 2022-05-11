@@ -31,7 +31,11 @@ class Board
     def move_piece(start_pos, end_pos)
         raise "No piece at start position" if self[start_pos] == nil
         raise "End position is outside board" if !valid_pos?(end_pos)
+        
         piece = self[start_pos]
+        legal_moves = piece.valid_moves
+        raise "Illegal move" if !legal_moves.include?(end_pos)
+        
         piece.pos = end_pos
         self[start_pos] = nil
         self[end_pos] = piece
@@ -44,6 +48,10 @@ class Board
         else
             true
         end
+    end
+
+    def add_piece(piece, pos)
+        self[pos] = piece
     end
 
 end
