@@ -1,21 +1,47 @@
 require_relative "piece.rb"
+require_relative "king.rb"
+require_relative "knight.rb"
+require_relative "null_piece.rb"
+require_relative "pawn.rb"
+require_relative "queen.rb"
+require_relative "rook.rb"
+require_relative "bishop.rb"
 
 class Board
     def initialize
         @rows = Array.new(8) { Array.new(8) }
-        # @null_piece = NullPiece
 
-        # temporary way to initialize pieces on board
-        (0..1).each do |row|
+        color_init = :w
+        row_init = 0
+        pieces = [Rook, Knight, Bishop, King, Queen, Bishop, Knight, Rook]
+        (0..7).each do |col|
+            new_pos = [row_init, col]
+            self[new_pos] = pieces[col].new(color_init, self, new_pos)
+        end
+        row_init = 1
+        (0..7).each do |col|
+            new_pos = [row_init, col]
+            self[new_pos] = Pawn.new(color_init, self, new_pos)
+        end
+
+        color_init = :b
+        row_init = 6
+        (0..7).each do |col|
+            new_pos = [row_init, col]
+            self[new_pos] = Pawn.new(color_init, self, new_pos)
+        end
+        row_init = 7
+        (0..7).each do |col|
+            new_pos = [row_init, col]
+            self[new_pos] = pieces[col].new(color_init, self, new_pos)
+        end
+
+        (2..5).each do |row|
             (0..7).each do |col|
-                self[[row, col]] = Piece.new(:w, self, [row, col])
+                self[[row, col]] = NullPiece.instance
             end
         end
-        (6..7).each do |row|
-            (0..7).each do |col|
-                self[[row, col]] = Piece.new(:b, self, [row, col])
-            end
-        end
+       
     end
 
     def[](pos)
@@ -37,7 +63,7 @@ class Board
         raise "Illegal move" if !legal_moves.include?(end_pos)
         
         piece.pos = end_pos
-        self[start_pos] = nil
+        self[start_pos] = NullPiece.instance
         self[end_pos] = piece
     end
 
