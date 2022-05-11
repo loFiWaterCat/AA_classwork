@@ -42,7 +42,7 @@ class Board
                 self[[row, col]] = NullPiece.instance
             end
         end
-       
+
     end
 
     def rows
@@ -62,11 +62,11 @@ class Board
     def move_piece(start_pos, end_pos)
         raise "No piece at start position" if self[start_pos] == nil
         raise "End position is outside board" if !valid_pos?(end_pos)
-        
+
         piece = self[start_pos]
         legal_moves = piece.valid_moves
         raise "Illegal move" if !legal_moves.include?(end_pos)
-        
+
         piece.pos = end_pos
         self[start_pos] = NullPiece.instance
         self[end_pos] = piece
@@ -84,5 +84,29 @@ class Board
     def add_piece(piece, pos)
         self[pos] = piece
     end
+
+    def in_check?(color)
+      king_pos = nil
+      rows.each.with_index do |row, i|
+        row.each.with_index do |piece, j|
+          if piece.is_a?(King) && piece.color == color
+            king_pos = [i, j]
+            break
+          end
+        end
+      end
+
+      rows.each do |row|
+        row.each do |piece|
+          if piece.color != color
+            moves = piece.valid_moves
+            return true if moves.include?(king_pos)
+          end
+        end
+      end
+
+      false
+    end
+
 
 end

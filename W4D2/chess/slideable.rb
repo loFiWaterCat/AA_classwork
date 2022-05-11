@@ -1,3 +1,5 @@
+require "byebug"
+
 module Slideable
   def valid_moves
     valid_positions = []
@@ -23,8 +25,9 @@ module Slideable
   def grow_unblocked_moves_in_dir(dx, dy)
     valid_positions = []
     x, y = pos
+    #debugger
     new_pos = [x + dx, y + dy]
-    while @board[new_pos] == nil && @board.valid_pos?(new_pos)
+    while @board.valid_pos?(new_pos) && @board[new_pos].color == nil
       valid_positions << new_pos
       x, y = new_pos
       new_pos = [x + dx, y + dy]
