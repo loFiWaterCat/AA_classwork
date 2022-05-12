@@ -28,7 +28,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   pry
-  rspec (~> 3.2.0)
+  rspec
 
 BUNDLED WITH
    2.3.12
