@@ -30,3 +30,48 @@ describe "#stock_picker" do
     expect([10, 1, 5, 4, 10].stock_picker).to eq([1, 4])
   end
 end
+
+describe TowersOfHanoi do
+  subject(:tower){TowersOfHanoi.new}
+  describe "#move" do
+    context "with valid moves" do
+      it "moves one number to another array/pile" do
+        tower.move(0,1)
+        expect(tower.left).to eq([4,3,2])
+        expect(tower.mid).to eq([1])
+        expect(tower.right).to be_empty
+      end
+    end
+    context "with invalid moves" do
+      it "raises an error if start tower is empty" do
+        expect {tower.move(1, 2)}.to raise_error("nothing to move")
+      end
+    end
+  end
+  describe "#won?" do
+    it "returns true if right array is full in the right order" do
+      tower.move(0,1)
+      tower.move(0,2)
+      tower.move(1,2)
+      tower.move(0,1)
+      tower.move(2,0)
+      tower.move(2,1)
+      tower.move(0,1)
+      tower.move(0,2)
+      tower.move(1,2)
+      tower.move(1,0)
+      tower.move(2,0)
+      tower.move(1,2)
+      tower.move(0,1)
+      tower.move(0,2)
+      tower.move(1,2)
+      expect(tower.won?).to eq(true)
+    end
+    it "returns false if right array is not full or in the right order" do
+      expect(tower.won?).to eq(false)
+    end
+  end
+
+end
+
+

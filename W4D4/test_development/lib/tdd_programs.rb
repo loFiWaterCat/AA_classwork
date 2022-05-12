@@ -1,3 +1,4 @@
+require "byebug"
 class Array
     def my_uniq
         uniq = []
@@ -47,4 +48,32 @@ class Array
 
       [best_i, best_j]
     end
+end
+
+class TowersOfHanoi
+  attr_reader :left, :right, :mid
+
+  def initialize
+    @left = [4,3,2,1]
+    @mid = []
+    @right = []
+    @towers = [@left, @mid, @right]
+  end
+
+  def move(start_tower, end_tower)
+    start_tower = @towers[start_tower]
+    end_tower = @towers[end_tower]
+
+    raise "nothing to move" if start_tower.empty?
+    raise "Tower is too full" if end_tower.length == 4
+
+    if end_tower.empty? || start_tower[-1] < end_tower[-1]
+      plate = start_tower.pop
+      end_tower.push(plate)
+    end
+  end
+
+  def won?
+    @right == [4, 3, 2, 1]
+  end
 end
