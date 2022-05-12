@@ -2,6 +2,8 @@ require "colorize"
 require_relative "cursor.rb"
 
 class Display
+  
+  attr_reader :cursor
 
   def initialize(board, debug = false)
     @board = board
