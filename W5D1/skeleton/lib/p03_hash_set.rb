@@ -6,19 +6,32 @@ class HashSet
     @count = 0
   end
 
-  def insert(key)
+  def insert(num)
+    if self[num].include?(num)
+      return
+    end
+    self[num]<< num
+    @count += 1
+    if @count == num_buckets 
+      resize!
+    end
   end
 
-  def include?(key)
+  def include?(num)
+    self[num].include?(num)
   end
 
-  def remove(key)
+  def remove(num)
+    if self[num].include?(num)
+      self[num].delete(num)
+      @count -= 1
+    end
   end
 
   private
 
   def [](num)
-    # optional but useful; return the bucket corresponding to `num`
+    @store[num.hash % num_buckets]
   end
 
   def num_buckets
@@ -26,5 +39,13 @@ class HashSet
   end
 
   def resize!
+    dupped = @store.dup
+    @count = 0 
+    @store = Array.new(num_buckets*2) { Array.new }
+    dupped.each do |sub|
+      sub.each do |ele|
+        insert(ele)
+      end
+    end
   end
 end

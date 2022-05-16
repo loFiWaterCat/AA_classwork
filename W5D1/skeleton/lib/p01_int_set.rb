@@ -10,8 +10,6 @@ class MaxIntSet
       raise "Out of bounds"
     end
     @store[num] = true
-
-
   end
 
   def remove(num)
