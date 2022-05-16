@@ -34,9 +34,11 @@ class LinkedList
   end
 
   def first
+    @head.next
   end
 
   def last
+    @tail.prev
   end
 
   def empty?
@@ -94,6 +96,12 @@ class LinkedList
   end
 
   def each
+    current_node = first
+    while current_node.val != nil
+      yield current_node
+      current_node = current_node.next
+    end
+    
   end
 
   # uncomment when you have `each` working and `Enumerable` included
