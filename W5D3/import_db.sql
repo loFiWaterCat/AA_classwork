@@ -59,8 +59,7 @@ INSERT INTO
 VALUES
   ('ALAN','TRAN'),
   ('Brian',"Lin"),
-  ('Chaplin', 'Pillar'),
-  ('Mike', 'Madsen');
+  ('Chaplin', 'Pillar');
 
 INSERT INTO
    questions(title,body,user_id)
