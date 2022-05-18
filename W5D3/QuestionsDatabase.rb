@@ -28,7 +28,7 @@ class User
 
   def self.find_by_id(id)
 
-      
+
 
        user = QuestionsDatabase.instance.execute(<<-SQL, id)
 
@@ -58,7 +58,7 @@ class User
        WHERE
         fname = ?
      SQL
-     
+
      User.new(user[0])
 
   end
@@ -77,9 +77,32 @@ class Question
     @title = options['title']
     @body= options['body']
     @user_id = options['user_id']
-
   end
 
+  def self.find_by_id(id)
+    question = QuestionsDatabase.instance.execute(<<-SQL, id)
+    SELECT
+      *
+    FROM
+      questions
+    WHERE
+      id = ?
+    SQL
+  Question.new(question[0])
+  end
+
+  def self.find_by_author_id(user_id)
+    question = QuestionsDatabase.instance.execute(<<-SQL, user_id)
+    SELECT
+      *
+    FROM
+      questions
+    WHERE
+      user_id = ?
+    SQL
+
+    question.map { |datum| Question.new(datum) }
+  end
 end
 
 class QuestionFollow

@@ -63,4 +63,14 @@ VALUES
 INSERT INTO
    questions(title,body,user_id)
  VALUES
-    ("Weight","HOW MUCH DO YOU LIFT??!",(SELECT id FROM users WHERE fname = "Brian" AND lname = "Lin"));
+    ("Weight","HOW MUCH DO YOU LIFT??!",(SELECT id FROM users WHERE fname = "Brian" AND lname = "Lin")),
+    ("Sleep","HOW MUCH DO YOU SLEEP??!",(SELECT id FROM users WHERE fname = "Brian" AND lname = "Lin")),
+    ("Food", "How much can you eat??!!",(SELECT id FROM users WHERE fname = "ALAN" AND lname = "TRAN")),
+    ("Wellbeing", "How are you?", (SELECT id FROM users WHERE fname = "ALAN" AND lname = "TRAN"));
+
+INSERT INTO
+    question_follows(user_id, question_id)
+VALUES
+    (1, 1),
+    (1, 2),
+    (2, 2);
