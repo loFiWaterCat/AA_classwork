@@ -11,24 +11,30 @@ class QuestionsDatabase < SQLite3::Database
   end
 end
 
-class Users
+class User
+  attr_accessor :id, :fname, :lname
+
   def self.all
     data = QuestionsDatabase.instance.execute("SELECT * FROM users")
-    data.map { |datum| Users.new(datum) }
+    data.map { |datum| User.new(datum) }
   end
 
-
+  def initialize(options)
+    @id = options['id']
+    @fname = options['fname']
+    @lname = options['lname']
+  end
 end
 
-class Questions
+class Question
 end
 
-class QuestionFollows
+class QuestionFollow
 end
 
-class Replies
+class Reply
 end
 
-class QuestionLikes
+class QuestionLike
 end
 
