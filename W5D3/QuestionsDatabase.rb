@@ -140,10 +140,6 @@ class QuestionFollow
   end
 end
 
-def 
-
-
-end
 
 class Reply
   attr_accessor :id, :user_id, :question_id , :body, :parent_reply_id
@@ -158,8 +154,33 @@ class Reply
        @user_id = options['user_id']
        @question_id=options["question_id"]
        @parent_reply_id = options['parent_reply_id']  
-
+     
   end
+
+  def self.find_by_user_id(banana)
+      reply =  QuestionsDatabase.instance.execute(<<-SQL, banana)
+      SELECT *
+      FROM replies
+      WHERE user_id = ?
+      SQL
+      
+      reply.map{|daytum| Reply.new(daytum)}
+  end
+  
+ def self.find_by_question_id(question_id)
+      reply =  QuestionsDatabase.instance.execute(<<-SQL, question_id)
+      SELECT *
+      FROM replies
+      WHERE question_id = ?
+      SQL
+    
+      reply.map{|datum| Reply.new(datum)}
+     
+ end
+
+
+
+
 end
 
 class QuestionLike
