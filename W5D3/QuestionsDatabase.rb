@@ -40,10 +40,9 @@ class User
         id = ?
      SQL
 
-    #  raise "#{self} not in database" unles
-     p "self is #{self} "
-     p user
-    #  User.new(user.first)
+     raise " User not in database" if user.empty?
+   
+     User.new(user.first)
   end
 
 
@@ -88,7 +87,11 @@ class Question
     WHERE
       id = ?
     SQL
+
+    raise " Question not in database" if question.empty?
+
   Question.new(question[0])
+
   end
 
   def self.find_by_author_id(user_id)
@@ -100,15 +103,63 @@ class Question
     WHERE
       user_id = ?
     SQL
-
+  
     question.map { |datum| Question.new(datum) }
   end
 end
 
 class QuestionFollow
+  attr_accessor :id, :user_id, :question_id
+
+  def self.all
+     data = QuestionsDatabase.instance.execute("SELECT * FROM question_follows")
+     data.map{|datum| QuestionFollow.new(datum)}
+  end
+
+  def initialize(options)
+       @id = options['id']
+       @user_id = options['user_id']
+       @question_id=options["question_id"]
+
+  end
+
+  def self.find_by_id(id)
+
+    follows = QuestionsDatabase.instance.execute(<<-SQL, id )
+
+         SELECT
+         *
+         FROM
+         question_follows 
+         WHERE
+         id = ?
+    SQL
+      
+    raise "Follow not in database" if follows.empty?
+     QuestionFollow.new(follows.first)
+  end
+end
+
+def 
+
+
 end
 
 class Reply
+  attr_accessor :id, :user_id, :question_id , :body, :parent_reply_id
+
+  def self.all
+     data = QuestionsDatabase.instance.execute("SELECT * FROM replies")
+     data.map{|datum| Reply.new(datum)}
+  end
+
+  def initialize(options)
+       @id = options['id']
+       @user_id = options['user_id']
+       @question_id=options["question_id"]
+       @parent_reply_id = options['parent_reply_id']  
+
+  end
 end
 
 class QuestionLike
