@@ -60,7 +60,8 @@ VALUES
   ('ALAN','TRAN'),
   ('Brian',"Lin"),
   ('Chaplin', 'Pillar'),
-  ('Mike', 'Madsen');
+  ('Mike', 'Madsen'),
+  ('Danny', 'Fire');
 
 INSERT INTO
    questions(title,body,user_id)
