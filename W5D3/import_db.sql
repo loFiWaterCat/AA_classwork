@@ -58,7 +58,9 @@ INSERT INTO
      users(fname,lname)
 VALUES
   ('ALAN','TRAN'),
-  ('Brian',"Lin");
+  ('Brian',"Lin"),
+  ('Chaplin', 'Pillar'),
+  ('Mike', 'Madsen');
 
 INSERT INTO
    questions(title,body,user_id)
