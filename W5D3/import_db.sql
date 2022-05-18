@@ -37,7 +37,7 @@ CREATE TABLE replies (
     question_id INTEGER NOT NULL,
     user_id INTEGER NOT NULL,
     body TEXT NOT NULL,
-    parent_reply_id INTEGER NOT NULL,
+    parent_reply_id INTEGER,
 
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (question_id) REFERENCES questions(id),
@@ -73,7 +73,13 @@ INSERT INTO
 VALUES
     (1, 1),
     (1, 2),
-    (2, 2);
+    (2, 4);
 
-
-
+INSERT INTO
+    replies(question_id, user_id, body, parent_reply_id)
+VALUES
+    (1, 1, "More than you", NULL),
+    (1, 2, "Bull sh*t", 1),
+    (3, 2, "An apple a day", NULL),
+    (3, 1, "To keep the doctors away?", 3),
+    (3, 2, "Yeah I can't afford the doctor :c", 4);
