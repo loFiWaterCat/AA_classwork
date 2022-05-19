@@ -86,3 +86,14 @@ VALUES
     (3, 2, "An apple a day", NULL),
     (3, 1, "To keep the doctors away?", 3),
     (3, 2, "Yeah I can't afford the doctor :c", 4);
+
+INSERT INTO
+    question_likes(user_id, question_id)
+VALUES
+    (1, 1),
+    (1, 2),
+    (2, 1),
+    (2, 3),
+    (2, 4),
+    (3, 4),
+    (4, 4);
