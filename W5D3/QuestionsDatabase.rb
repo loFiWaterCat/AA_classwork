@@ -27,9 +27,6 @@ class User
   end
 
   def self.find_by_id(id)
-
-
-
        user = QuestionsDatabase.instance.execute(<<-SQL, id)
 
        SELECT
@@ -46,20 +43,28 @@ class User
   end
 
 
-  def self.find_by_name(fname)
+  def self.find_by_name(fname,lname)
 
-    user = QuestionsDatabase.instance.execute(<<-SQL, fname)
+    user = QuestionsDatabase.instance.execute(<<-SQL, fname,lname)
 
        SELECT
          *
        FROM
         users
        WHERE
-        fname = ?
+        fname = ? AND lname = ?
      SQL
 
      User.new(user[0])
 
+  end
+    
+  def authored_questions
+     Question.find_by_author_id(@id)
+  end
+
+  def authored_replies
+      Reply.find_by_user_id(self.id)
   end
 end
 
@@ -175,14 +180,32 @@ class Reply
       SQL
     
       reply.map{|datum| Reply.new(datum)}
-     
  end
-
-
-
-
 end
 
 class QuestionLike
+  attr_accessor :id, :user_id, :question_id 
+
+  def self.all
+     data = QuestionsDatabase.instance.execute("SELECT * FROM question_likes")
+     data.map{|datum| QuestionLike.new(datum)}
+  end
+
+  def initialize(options)
+      @id = options["id"]
+      @user_id = options["user_id"]
+      @question_id = options["question_id"]
+  end
+
+   def find_by_id(id)
+      questionlike = QuestionsDatabase.instance.execute(<<-SQL,id)
+      SELECT *
+      FROM question_likes
+      WHERE id = ?
+      SQL
+
+      questionlike.map{|dayum| QuestionLike.new(dayum) }
+   end
+
 end
 
