@@ -111,6 +111,15 @@ class Question
   
     question.map { |datum| Question.new(datum) }
   end
+
+def author 
+    User.find_by_id(@id)
+end
+
+def replies
+    Reply.find_by_question_id(@id)
+end
+
 end
 
 class QuestionFollow
@@ -143,6 +152,7 @@ class QuestionFollow
     raise "Follow not in database" if follows.empty?
      QuestionFollow.new(follows.first)
   end
+
 end
 
 
@@ -180,8 +190,22 @@ class Reply
       SQL
     
       reply.map{|datum| Reply.new(datum)}
- end
+  end
+ 
+  def author
+      User.find_by_id(@user_id)
+  end
+
+  def question
+      Question.find_by_id(@question_id)
+  end
+
+  def parent_reply
+      Reply.find_by_id(@parent_reply_id)
+  end
+
 end
+
 
 class QuestionLike
   attr_accessor :id, :user_id, :question_id 
@@ -197,7 +221,7 @@ class QuestionLike
       @question_id = options["question_id"]
   end
 
-   def find_by_id(id)
+   def self.find_by_id(id)
       questionlike = QuestionsDatabase.instance.execute(<<-SQL,id)
       SELECT *
       FROM question_likes
@@ -206,6 +230,9 @@ class QuestionLike
 
       questionlike.map{|dayum| QuestionLike.new(dayum) }
    end
+
+
+
 
 end
 
