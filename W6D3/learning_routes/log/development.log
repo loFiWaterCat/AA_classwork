@@ -442,3 +442,120 @@ Processing by UsersController#show as */*
 Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/users/2" for ::1 at 2022-05-25 16:02:26 -0700
+  
+SyntaxError (/Users/charlie/Desktop/bob/AA_classwork/W6D3/learning_routes/app/controllers/users_controller.rb:19: syntax error, unexpected ',', expecting =>
+...mit(:some_category => [{:a_key, :a_second_key, :inner_inner_...
+...                              ^):
+  
+app/controllers/users_controller.rb:19: syntax error, unexpected ',', expecting =>
+Started GET "/users/2" for ::1 at 2022-05-25 16:02:45 -0700
+  
+SyntaxError (/Users/charlie/Desktop/bob/AA_classwork/W6D3/learning_routes/app/controllers/users_controller.rb:19: syntax error, unexpected ',', expecting =>
+...mit(:some_category => [{:a_key, :a_second_key, :inner_inner_...
+...                              ^):
+  
+app/controllers/users_controller.rb:19: syntax error, unexpected ',', expecting =>
+Started GET "/users/2" for ::1 at 2022-05-25 16:02:52 -0700
+  
+SyntaxError (/Users/charlie/Desktop/bob/AA_classwork/W6D3/learning_routes/app/controllers/users_controller.rb:19: syntax error, unexpected ',', expecting =>
+...mit(:some_category => [{:a_key, :a_second_key, :inner_inner_...
+...                              ^):
+  
+app/controllers/users_controller.rb:19: syntax error, unexpected ',', expecting =>
+Started GET "/users/2" for ::1 at 2022-05-25 16:05:30 -0700
+  
+SyntaxError (/Users/charlie/Desktop/bob/AA_classwork/W6D3/learning_routes/app/controllers/users_controller.rb:19: syntax error, unexpected ')', expecting =>
+...r_hash => {}], :something_else)
+...                              ^
+/Users/charlie/Desktop/bob/AA_classwork/W6D3/learning_routes/app/controllers/users_controller.rb:24: syntax error, unexpected end-of-input, expecting keyword_end
+...=> [:type, :coordinates => []])
+...                               ^):
+  
+app/controllers/users_controller.rb:19: syntax error, unexpected ')', expecting =>
+app/controllers/users_controller.rb:24: syntax error, unexpected end-of-input, expecting keyword_end
+Started GET "/users/2" for ::1 at 2022-05-25 16:08:54 -0700
+  
+SyntaxError (/Users/charlie/Desktop/bob/AA_classwork/W6D3/learning_routes/app/controllers/users_controller.rb:13: syntax error, unexpected ')', expecting =>
+...r_hash => {}], :something_else)
+...                              ^):
+  
+app/controllers/users_controller.rb:13: syntax error, unexpected ')', expecting =>
+Started GET "/users/2" for ::1 at 2022-05-25 16:09:29 -0700
+  
+SyntaxError (/Users/charlie/Desktop/bob/AA_classwork/W6D3/learning_routes/app/controllers/users_controller.rb:13: syntax error, unexpected ')', expecting =>
+...r_hash => {}], :something_else)
+...                              ^):
+  
+app/controllers/users_controller.rb:13: syntax error, unexpected ')', expecting =>
+Started GET "/users/2" for ::1 at 2022-05-25 16:11:47 -0700
+  
+SyntaxError (/Users/charlie/Desktop/bob/AA_classwork/W6D3/learning_routes/app/controllers/users_controller.rb:13: syntax error, unexpected ')', expecting =>
+...a_second_key], :something_else)
+...                              ^):
+  
+app/controllers/users_controller.rb:13: syntax error, unexpected ')', expecting =>
+Started GET "/users/2" for ::1 at 2022-05-25 16:12:33 -0700
+  
+SyntaxError (/Users/charlie/Desktop/bob/AA_classwork/W6D3/learning_routes/app/controllers/users_controller.rb:13: syntax error, unexpected ')', expecting =>
+...a_second_key], :something_else)
+...                              ^):
+  
+app/controllers/users_controller.rb:13: syntax error, unexpected ')', expecting =>
+Started GET "/users/2" for ::1 at 2022-05-25 16:13:51 -0700
+  
+SyntaxError (/Users/charlie/Desktop/bob/AA_classwork/W6D3/learning_routes/app/controllers/users_controller.rb:13: syntax error, unexpected ':', expecting ')'
+...re(:cat).permit(:some_category: [:a_key, :a_second_key], :so...
+...                              ^
+/Users/charlie/Desktop/bob/AA_classwork/W6D3/learning_routes/app/controllers/users_controller.rb:13: syntax error, unexpected ',', expecting keyword_end
+...egory: [:a_key, :a_second_key], :something_else)
+...                              ^):
+  
+app/controllers/users_controller.rb:13: syntax error, unexpected ':', expecting ')'
+app/controllers/users_controller.rb:13: syntax error, unexpected ',', expecting keyword_end
+  [1m[35m (34.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (23.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1585881207052931040)[0m
+  ↳ bin/rails:9
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to User (20220525232510)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (11.6ms)[0m  [1m[31mROLLBACK[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(1585881207052931040)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1585881207052931040)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to User (20220525232510)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (12.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying NOT NULL, "email" character varying NOT NULL)[0m
+  ↳ db/migrate/20220525232510_user.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (2.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220525232510"]]
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (13.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2022-05-25 23:26:35.197282"], ["updated_at", "2022-05-25 23:26:35.197282"]]
+  ↳ bin/rails:9
+  [1m[35m (5.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(1585881207052931040)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/charlie/.rbenv/versions/2.5.1/bin/rake:23
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
