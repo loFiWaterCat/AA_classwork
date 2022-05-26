@@ -24,8 +24,10 @@ class UsersController < ApplicationController
     render json: user
   end
 
-  def delete
+  def destroy
     user = User.find(params[:id])
+    User.destroy(params[:id])
+    render json: user
   end
 
   private
