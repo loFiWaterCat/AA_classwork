@@ -7,20 +7,23 @@ class CatsController < ApplicationController
 
     def show
         @cat = Cat.find_by(id: params[:id])
-        render :show 
+        render :show
     end
 
-    def create 
+    def create
         @cat = Cat.new(cat_params)
-        if @cat.save  
+        if @cat.save
             redirect_to cat_url(@cat)
         else
             render json: @cat.errors.full_messages, status: 422
-        end 
+        end
 
     end
 
-    def
+    def new
+      @cat = Cat.new
+      render :new
+    end
 
 
     private
