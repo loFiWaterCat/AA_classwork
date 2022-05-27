@@ -31,6 +31,7 @@
 #     t.index ["username"], name: "index_users_on_username", unique: true
 #   end
 
+
 User.create!(username: "Alan")
 User.create!(username: "Charlie")
 User.create!(username: "Danny")
@@ -54,4 +55,8 @@ ArtworkShare.create!(artwork_id: 2, viewer_id: 5)
 ArtworkShare.create!(artwork_id: 4, viewer_id: 6)
 ArtworkShare.create!(artwork_id: 5, viewer_id: 1)
 
-
+Comment.create!(user_id: 1, artwork_id: 1, body: "I like to eat ASSociations")
+Comment.create!(user_id: 2, artwork_id: 1, body: "Woah man save some for me")
+Comment.create!(user_id: 1, artwork_id: 1, body: "I got u homie")
+Comment.create!(user_id: 4, artwork_id: 3, body: "Terminal is love")
+Comment.create!(user_id: 9, artwork_id: 4, body: "Never forget")

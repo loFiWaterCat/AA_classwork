@@ -15,6 +15,13 @@ Rails.application.routes.draw do
   
   get 'users/:user_id/artworks', to: 'artworks#index'
 
+  resources :comments, only: [:create, :destroy, :index]
+
+
+
+
+
+
 
 
 
