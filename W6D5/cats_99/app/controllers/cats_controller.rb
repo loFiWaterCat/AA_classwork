@@ -22,7 +22,7 @@ class CatsController < ApplicationController
 
     def new
       @cat = Cat.new
-      render :newabc
+      render :new
     end
 
 
