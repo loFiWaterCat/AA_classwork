@@ -1,6 +1,6 @@
-<h1> Create user! >:D </h1>
+<h1> Login C:</h1>
 
-<form action="<%= users_url %>" method="post">
+<form action="<%= session_url %>" method="post">
   <label >Username:
     <input type="text" name="user[username]" value="">
   </label>
@@ -9,5 +9,5 @@
     <input type="password" name="user[password]" value="">
   </label>
   <br>
-  <input type="submit" value="Create User">
+  <input type="submit" value="Login">
 </form>
