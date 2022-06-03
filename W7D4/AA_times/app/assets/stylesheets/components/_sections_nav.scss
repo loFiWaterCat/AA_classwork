@@ -1,0 +1,28 @@
+.section-nav {
+    font-family: $sans-serif;
+
+    ul {
+        display: flex;
+        justify-content: center;
+    }
+
+    ul > a {
+        padding: 10px;
+        text-decoration: none;
+    }
+
+    ul > a:hover {
+        background-color: $lightest-gray;
+    }
+
+    ul > a:last-child {
+        text-transform: uppercase;
+    }
+
+
+    ul > a:last-child:hover {
+        text-decoration: underline;
+        background-color: white;
+        text-transform: uppercase;
+    }
+}

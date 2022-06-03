@@ -1,0 +1,111 @@
+.masthead {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-bottom: 2px solid black;
+	position: relative;
+}
+
+.language-nav {
+	position: absolute;
+	top: -15px;
+	left: calc(50% - (177.78px/2));
+	background: white;
+	border: 1px solid $light-gray;
+	border-bottom: none;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	display: flex;
+	flex-direction: row;
+
+	a {
+		margin: 0 5px;
+		text-transform: uppercase;
+		font-family: $sans-serif;
+		font-size: 10px;
+		color: $dark-gray;
+	}
+
+	a:hover{
+		background-color: $lightest-gray;
+		cursor: pointer;
+	}
+
+	li:first-child{
+		font-weight: bold;
+	}
+}
+
+#logo {
+	width: 370px;	
+}
+// .languages{
+// 	display: flex;
+
+// }
+
+.logo {
+	max-width: 400px;
+	margin-top: 10px;
+}
+
+.masthead-links {
+	display: flex;
+	font-family: $sans-serif;
+	font-size: 11px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+
+	li {
+		margin-left: 10px;
+	}
+
+	button {
+		background: none;
+		padding: 0px;
+		color: #000;
+		font-weight: normal;
+		border: none;
+	}
+
+	button:hover {
+		background-color: $lightest-gray;
+	}
+
+	a,
+	button, 
+	time {
+		margin-right: 10px;
+	}
+
+	i {
+		margin-right: 5px;
+	}
+
+	strong {
+		color: green;
+	}
+}
+
+.masthead div{
+	display: flex;
+}
+
+.masthead div a{
+	padding-left: 5px;
+	padding-right: 5px;
+	border-left: 2px solid $lightest-gray;
+}
+
+.masthead div p {
+	padding-right: 5px ;
+}
+
+.masthead div a:hover{
+	text-decoration: underline;
+}
+
+.masthead i{
+	margin-bottom: 3px;
+	margin-right: 5px;
+}
