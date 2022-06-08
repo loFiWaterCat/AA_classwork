@@ -79,6 +79,8 @@ Board.prototype.isMine = function (pos, color) {
  * Checks if a given position has a piece on it.
  */
 Board.prototype.isOccupied = function (pos) {
+  sklfjlqwrjlsjfv 
+  wrong answer
 };
 
 /**
