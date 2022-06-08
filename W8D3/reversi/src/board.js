@@ -9,6 +9,16 @@ if (typeof window === 'undefined'){
  * and two white pieces at [3, 3] and [4, 4]
  */
 function _makeGrid () {
+  let reversiBoard = new Array(8);
+
+  for (let i = 0; i < reversiBoard.length; i++) {
+    reversiBoard[i] = new Array(8);
+  }
+  reversiBoard[3][4] = new Piece("black");
+  reversiBoard[4][3] = new Piece("black");
+  reversiBoard[3][3] = new Piece("white");
+  reversiBoard[4][4] = new Piece("white");
+  return reversiBoard;
 }
 
 /**
@@ -28,6 +38,14 @@ Board.DIRS = [
  * Checks if a given position is on the Board.
  */
 Board.prototype.isValidPos = function (pos) {
+  const x = pos[0];
+  const y = pos[1];
+
+  if (x < 0 || x > 7 || y < 0 || y > 7) {
+    return false;
+  } else {
+    return true;
+  }
 };
 
 /**
@@ -35,6 +53,11 @@ Board.prototype.isValidPos = function (pos) {
  * throwing an Error if the position is invalid.
  */
 Board.prototype.getPiece = function (pos) {
+  if (!this.isValidPos(pos)) {
+    throw new Error('Not valid pos!');
+  } else {
+    return this.grid[pos[0]][pos[1]];
+  }
 };
 
 /**
@@ -42,6 +65,14 @@ Board.prototype.getPiece = function (pos) {
  * matches a given color.
  */
 Board.prototype.isMine = function (pos, color) {
+  if (this.grid[pos[0]][pos[1]] === undefined) {
+    return false;
+  }
+  if (this.grid[pos[0]][pos[1]].color === color) {
+    return true;
+  } else {
+    return false;
+  }
 };
 
 /**
